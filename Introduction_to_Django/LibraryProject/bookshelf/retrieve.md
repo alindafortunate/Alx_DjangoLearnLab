@@ -1,3 +1,4 @@
 from bookshelf.models import Book
-Book.objects.all()
-<QuerySet [<Book: Book object (1)>]>
+from bookshelf.models import Book
+Book.objects.get(id =1, title='1984')
+<Book: Book object (1)>>
