@@ -1,1 +1,2 @@
-My first Django Project
+My Django project.
+I will continue programming
