@@ -5,7 +5,7 @@ Book.objects.filter(author__id=1)
 
 # List all books in a library.
 
-library1 = Library.objects.create(name="Programming")
+library1 = Library.objects.get(name="Programming")
 library1.books.all()
 
 # Retrieve the librarian for a library.
