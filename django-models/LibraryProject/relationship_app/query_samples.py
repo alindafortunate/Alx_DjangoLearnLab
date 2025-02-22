@@ -1,7 +1,10 @@
 from relationship_app.models import Author, Book, Library, Librarian
 
 # Query all books by a specific author.
-Book.objects.filter(author__id=1)
+author_name = Author.objects.create("Robinson")
+Author.objects.get(name=author_name)
+Book.objects.filter(author=author_name)
+
 
 # List all books in a library.
 library_name = Library.objects.create(name="Science")
