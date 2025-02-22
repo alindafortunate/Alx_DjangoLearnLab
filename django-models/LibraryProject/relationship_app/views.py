@@ -1,7 +1,8 @@
 from django.shortcuts import render
 from django.views.generic.detail import DetailView
-from django.contrib.auth.views import LoginView
-from django.contrib.auth.views import LogoutView
+from django.contrib.auth import authenticate
+from django.contrib.auth import login
+from django.contrib.auth import logout
 from django.contrib.auth.forms import UserCreationForm
 from django.views.generic import CreateView
 from django.urls import reverse_lazy
@@ -29,9 +30,17 @@ class SignUpView(CreateView):
     template_name = "registration/register.html"
 
 
-class LoginView(LoginView):
-    template_name = "registration/login.html"
+def LoginView(request):
+    username = request.POST["username"]
+    password = request.POST["password"]
+    user = authenticate(request, username=username, password=password)
+    if user is not None:
+        login(request, user)
+        return render(request, "registration/register.html")
+    else:
+        return render(request, "details not matching")
 
 
-class LogoutView(LogoutView):
-    template_name = "registration/logout.html"
+def LogoutView(request):
+    logout(request)
+    return render(request, "registration/logout.html")
