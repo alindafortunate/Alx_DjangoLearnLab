@@ -32,7 +32,7 @@ def register(request):
             form.save()
         return redirect("/relationship_app/login")
     context = {"form": form}
-    return render(request, "registration/register.html", context)
+    return render(request, "relationship_app/register.html", context)
 
 
 def LoginView(request):
