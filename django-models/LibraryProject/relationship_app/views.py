@@ -36,11 +36,11 @@ def LoginView(request):
     user = authenticate(request, username=username, password=password)
     if user is not None:
         login(request, user)
-        return render(request, "registration/register.html")
+        return render(request, "relationship_app/register.html")
     else:
         return render(request, "details not matching")
 
 
 def LogoutView(request):
     logout(request)
-    return render(request, "registration/logout.html")
+    return render(request, "relationship_app/logout.html")

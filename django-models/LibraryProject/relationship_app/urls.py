@@ -11,12 +11,12 @@ urlpatterns = [
     path("library/<pk>/", LibraryDetailView.as_view(), name="library_detail"),
     path(
         "relationship_app/login",
-        LoginView.as_view(template_name="registration/login.html"),
+        LoginView.as_view(template_name="relationship_app/login.html"),
         name="login",
     ),
     path(
         "relationship_app/logout/",
-        LogoutView.as_view(template_name="registration/login.html"),
+        LogoutView.as_view(template_name="relationship_app/login.html"),
         name="logout",
     ),
     path("relationship_app/register/", views.register.as_view(), name="register"),
