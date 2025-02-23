@@ -59,19 +59,19 @@ def LogoutView(request):
     return render(request, "registration/logout.html")
 
 
-@user_passes_test(role="admin", login_url="/relationship/login")
-def admin_view(request):
-    pass
+# @user_passes_test(role="admin", login_url="/relationship/login")
+def admin_view(user):
+    user.admin
 
 
-@user_passes_test(role="librarian", login_url="/relationship/login")
-def librarian_view(request):
-    pass
+# @user_passes_test(role="librarian", login_url="/relationship/login")
+def librarian_view(user):
+    user.librarian
 
 
-@user_passes_test(role="member", login_url="/relationship/login")
-def member_view(request):
-    pass
+# @user_passes_test(role="member", login_url="/relationship/login")
+def member_view(user):
+    user.member
 
 
 # Authentication views.
