@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, HttpResponse
 from django.views.generic.detail import DetailView
 from django.contrib.auth import authenticate
 from django.contrib.auth import login
@@ -59,19 +59,31 @@ def LogoutView(request):
     return render(request, "registration/logout.html")
 
 
+def is_admin(user):
+    user.userprofile.role == "Admin"
+
+
+def is_librarian(user):
+    user.userprofile.role == "Librarian"
+
+
+def is_member(user):
+    user.userprofile.role == "Member"
+
+
 # @user_passes_test(role="admin", login_url="/relationship/login")
-def admin_view(user):
-    user.admin
+def admin_view(request):
+    return HttpResponse("relationship_app/admin_view.html")
 
 
 # @user_passes_test(role="librarian", login_url="/relationship/login")
-def librarian_view(user):
-    user.librarian
+def librarian_view(request):
+    return HttpResponse("relationship_app/librarian_view.html")
 
 
 # @user_passes_test(role="member", login_url="/relationship/login")
-def member_view(user):
-    user.member
+def member_view(request):
+    return HttpResponse("relationship_app/member_view.html")
 
 
 # Authentication views.
