@@ -4,6 +4,7 @@ from django.contrib.auth import authenticate
 from django.contrib.auth import login
 from django.contrib.auth import logout
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib import messages
 from django.views.generic import CreateView
 from django.urls import reverse_lazy
 
@@ -30,7 +31,11 @@ def register(request):
         form = UserCreationForm(request.POST)
         if form.is_valid():
             form.save()
-        return redirect("/relationship_app/login")
+            username = form.cleaned_data.get("username")
+            messages.success(request, f"Your account has been created, you can login.")
+            return redirect("/relationship_app/login")
+    else:
+        form = UserCreationForm()
     context = {"form": form}
     return render(request, "relationship_app/register.html", context)
 
