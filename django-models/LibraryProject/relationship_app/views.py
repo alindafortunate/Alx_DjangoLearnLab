@@ -4,9 +4,12 @@ from django.contrib.auth import authenticate
 from django.contrib.auth import login
 from django.contrib.auth import logout
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserChangeForm
+from django.contrib.auth.views import LoginView, LogoutView
+from django.contrib.auth.decorators import user_passes_test
+
 from django.contrib import messages
-from django.views.generic import CreateView
-from django.urls import reverse_lazy
+
 
 from .models import Book
 from .models import Library
@@ -54,3 +57,21 @@ def LoginView(request):
 def LogoutView(request):
     logout(request)
     return render(request, "registration/logout.html")
+
+
+@user_passes_test(role="admin", login_url="/relationship/login")
+def admin_view(request):
+    pass
+
+
+@user_passes_test(role="librarian", login_url="/relationship/login")
+def librarian_view(request):
+    pass
+
+
+@user_passes_test(role="member", login_url="/relationship/login")
+def member_view(request):
+    pass
+
+
+# Authentication views.
