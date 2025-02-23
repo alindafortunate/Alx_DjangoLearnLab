@@ -4,8 +4,7 @@ from django.contrib.auth import authenticate
 from django.contrib.auth import login
 from django.contrib.auth import logout
 from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth.forms import UserChangeForm
-from django.contrib.auth.views import LoginView, LogoutView
+from django.contrib.auth.decorators import permission_required
 from django.contrib.auth.decorators import user_passes_test
 
 from django.contrib import messages
@@ -85,7 +84,7 @@ def librarian_view(request):
 def member_view(request):
     return render(request, "relationship_app/member_view.html")
 
-
+@permission_required(relationship_app.can_add_book)
 def add_book(request):
     return HttpResponse("Add a book.")
 
