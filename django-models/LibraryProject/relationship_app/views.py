@@ -71,19 +71,28 @@ def is_member(user):
     user.userprofile.role == "Member"
 
 
-@user_passes_test(is_admin, login_url="/relationship/login")
+@user_passes_test(is_admin, login_url="login")
 def admin_view(request):
-    return HttpResponse("relationship_app/admin_view.html")
+    return render(request, "relationship_app/admin_view.html")
 
 
-@user_passes_test(is_librarian, login_url="/relationship/login")
+@user_passes_test(is_librarian, login_url="login")
 def librarian_view(request):
-    return HttpResponse("relationship_app/librarian_view.html")
+    return render(request, "relationship_app/librarian_view.html")
 
 
-@user_passes_test(is_member, login_url="/relationship/login")
+@user_passes_test(is_member, login_url="login")
 def member_view(request):
-    return HttpResponse("relationship_app/member_view.html")
+    return render(request, "relationship_app/member_view.html")
 
 
-# Authentication views.
+def add_book(request):
+    return HttpResponse("Add a book.")
+
+
+def edit_book(request):
+    return HttpResponse("edit a book")
+
+
+def delete_book(request):
+    return HttpResponse("Delete a book")
