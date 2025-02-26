@@ -3,10 +3,9 @@ from django.contrib.auth.models import AbstractUser
 from django.contrib.auth.models import BaseUserManager
 
 
-
 # Create your models here.
 class CustomUserManager(BaseUserManager):
-    def creat_user(self, email, password=None):
+    def create_user(self, email, password=None):
         user = self.model(email=self.normalize_email(email))
         user.set_password(password)
         user.save(using=self._db)
@@ -14,7 +13,7 @@ class CustomUserManager(BaseUserManager):
         return user
 
     def create_superuser(self, email, password=None):
-        user = self.creat_user(email, password)
+        user = self.create_user(email, password)
         user.is_staff = True
         user.is_superuser = True
         user.save(using=self._db)
@@ -32,6 +31,7 @@ class CustomUser(AbstractUser):
 
     objects = CustomUserManager()
 
+
 class Book(models.Model):
     title = models.CharField(max_length=200)
     author = models.CharField(max_length=100)
@@ -39,5 +39,3 @@ class Book(models.Model):
 
     def __str__(self):
         return f"{self.title}"
-
-
