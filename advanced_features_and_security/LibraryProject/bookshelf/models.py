@@ -42,8 +42,8 @@ class Book(models.Model):
 
     class Meta:
         permissions = [
-            ("can_view", "can_view"),
-            ("can_create", "can_create"),
-            ("can_edit", "can_edit"),
-            ("can_delete", "can_delete"),
+            ("can_view", "can view"),
+            ("can_create", "can create"),
+            ("can_edit", "can edit"),
+            ("can_delete", "can delete"),
         ]
