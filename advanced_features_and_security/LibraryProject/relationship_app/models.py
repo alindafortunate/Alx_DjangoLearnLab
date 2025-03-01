@@ -1,4 +1,4 @@
-from django.contrib.auth.models import User
+from bookshelf.models import CustomUser
 from django.db import models
 from django.db.models.signals import post_save
 from django.dispatch import receiver
@@ -54,7 +54,7 @@ class UserProfile(models.Model):
     )
 
     user = models.OneToOneField(
-        User, on_delete=models.CASCADE, related_name="userprofile"
+        CustomUser, on_delete=models.CASCADE, related_name="userprofile"
     )
     role = models.CharField(max_length=255, choices=USER_ROLES)
 
@@ -65,10 +65,10 @@ class UserProfile(models.Model):
         if created:
             UserProfile.objects.create(user=instance)
 
-    post_save.connect(create_profile, sender=User)
+    post_save.connect(create_profile, sender=CustomUser)
 
     def update_profile(sender, instance, created, **kwargs):
         if created is False:
             instance.userprofile.save()
 
-    post_save.connect(update_profile, sender=User)
+    post_save.connect(update_profile, sender=CustomUser)
