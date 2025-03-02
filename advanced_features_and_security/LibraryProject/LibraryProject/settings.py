@@ -25,7 +25,7 @@ SECRET_KEY = "django-insecure-l^#ft8_b+-50=2v#6*kcp%h%hj^^ae-&88=_0cgknv!vixxtnj
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -129,7 +129,7 @@ LOGOUT_REDIRECT_URL = "login"
 
 AUTH_USER_MODEL = "bookshelf.CustomUser"
 
-SECURE_SSL_REDIRECT = False
+SECURE_SSL_REDIRECT = True
 
 CSRF_COOKIE_SECURE = True
 
@@ -139,4 +139,10 @@ SECURE_BROWSER_XSS_FILTER = True
 
 SECURE_CONTENT_TYPE_NOSNIFF = True
 
-# X_FRAME_OPTIONS = "*"
+SECURE_HSTS_SECONDS = 31536000
+
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+
+SECURE_HSTS_PRELOAD = True
+
+X_FRAME_OPTIONS = "DENY"
