@@ -1,1 +1,4 @@
 # ExampleForm
+
+class ExampleForm:
+    pass

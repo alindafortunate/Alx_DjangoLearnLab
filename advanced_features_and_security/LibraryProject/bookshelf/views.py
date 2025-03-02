@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import permission_required
 from bookshelf.models import Book
+from .forms import ExampleForm
 
 
 # Create your views here.
