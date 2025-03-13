@@ -16,7 +16,7 @@ class BookSerializer(serializers.ModelSerializer):
         """
         Serializer method to validate and ensure that the year is not in the future
         """
-        if data["pulication_year"] > (date.today()).year:
+        if data["publication_year"] > (date.today()).year:
             print((date.today()).year)
             raise serializers.ValidationError(
                 "The publication should not be in the future"
@@ -26,7 +26,9 @@ class BookSerializer(serializers.ModelSerializer):
 
 class AuthorSerializer(serializers.ModelSerializer):
 
-    books = BookSerializer(many=True, read_only=True)  # This handles the one-to-many relationship between the Author and Book model
+    books = BookSerializer(
+        many=True, read_only=True
+    )  # This handles the one-to-many relationship between the Author and Book model
 
     class Meta:
         model = Author
