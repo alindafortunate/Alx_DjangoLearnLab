@@ -24,8 +24,10 @@ class BookTest(APITestCase):
             "author": 1,
         }
         response = self.client.post(self.url, data)
+        response = self.client.login()
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
         self.assertEqual(response.data["title"], "Introduction to Django")
+        
     # def test_get_book(self):
     #     """
     #     Test method to ensure that we list a book
