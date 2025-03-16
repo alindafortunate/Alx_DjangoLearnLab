@@ -13,7 +13,7 @@ class BookTest(APITestCase):
             author=Author.objects.create(name="Alinda Fortunate"),
         )
         self.url = reverse("create-book")
-    
+
     def test_create_book(self):
         """
         Test method to ensure that we can create a book
@@ -24,10 +24,10 @@ class BookTest(APITestCase):
             "author": 1,
         }
         response = self.client.post(self.url, data)
-        response = self.client.login()
+
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
         self.assertEqual(response.data["title"], "Introduction to Django")
-        
+
     # def test_get_book(self):
     #     """
     #     Test method to ensure that we list a book
@@ -35,4 +35,6 @@ class BookTest(APITestCase):
 
     #     response = self.client.get(self.url)
     #     self.assertEqual(response.status_code, 200)
-    
+    def test_authenticated_user(self):
+        self.client.login(username="alinda", password="secret")
+        pass
