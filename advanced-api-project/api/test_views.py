@@ -1,8 +1,11 @@
 from rest_framework.test import APITestCase
 from rest_framework import status
 from django.urls import reverse
-
 from .models import Book, Author
+
+# Please and please don't use this code it's not satisfying, I am yet to understand test
+# I did thid to beat the deadline, I will come to it later and rectify it.
+# Don't rely on it please.
 
 
 class BookTest(APITestCase):
@@ -28,13 +31,6 @@ class BookTest(APITestCase):
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
         self.assertEqual(response.data["title"], "Introduction to Django")
 
-    # def test_get_book(self):
-    #     """
-    #     Test method to ensure that we list a book
-    #     """
-
-    #     response = self.client.get(self.url)
-    #     self.assertEqual(response.status_code, 200)
     def test_authenticated_user(self):
         self.client.login(username="alinda", password="secret")
         pass
