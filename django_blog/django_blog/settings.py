@@ -55,7 +55,7 @@ ROOT_URLCONF = "django_blog.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [BASE_DIR / 'templates'],
+        "DIRS": [BASE_DIR / "templates"],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -76,8 +76,17 @@ WSGI_APPLICATION = "django_blog.wsgi.application"
 
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": "blog_database",
+        "USER": "alindafortunate",
+        "PASSWORD": "Alinda@1998",
+        "HOST": "localhost",
+        "PORT": 5432,
+        # "previewLimit": 50,
+        # "driver": "PostgreSQL",
+        # "name": "PG Local",
+        # "database": "blog_database",
+        # "connectionTimeout": 30
     }
 }
 
