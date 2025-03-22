@@ -1,6 +1,14 @@
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
+from django.views.generic import (
+    ListView,
+    DetailView,
+    CreateView,
+    UpdateView,
+    DeleteView,
+)
+from .models import Post
 
 
 # Create your views here.
@@ -34,3 +42,30 @@ def profile(request):
 
 def post_list(request):
     pass
+
+
+class PostListView(ListView):
+    model = Post
+    queryset = Post.objects.all()
+    template_name = "blog/post_list.html"
+
+
+class PostDetailView(DetailView):
+    model = Post
+    queryset = Post.objects.all()
+    template_name = "blog/post_detail.html"
+
+
+class PostCreateView(CreateView):
+    model = Post
+    template_name = "blog/post_create.html"
+
+
+class PostUpdateView(UpdateView):
+    model = Post
+    template_name = "blog/post_update.html"
+
+
+class PostDeleteView(DeleteView):
+    model = Post
+    template_name = "blog/post_delete.html"
