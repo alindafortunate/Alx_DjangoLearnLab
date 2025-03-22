@@ -81,12 +81,7 @@ DATABASES = {
         "USER": "alindafortunate",
         "PASSWORD": "Alinda@1998",
         "HOST": "localhost",
-        "PORT": 5432,
-        # "previewLimit": 50,
-        # "driver": "PostgreSQL",
-        # "name": "PG Local",
-        # "database": "blog_database",
-        # "connectionTimeout": 30
+        "PORT": 5432,        
     }
 }
 
