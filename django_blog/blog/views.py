@@ -8,6 +8,8 @@ from django.views.generic import (
     UpdateView,
     DeleteView,
 )
+
+# from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Post
 
 
@@ -58,14 +60,19 @@ class PostDetailView(DetailView):
 
 class PostCreateView(CreateView):
     model = Post
-    template_name = "blog/post_create.html"
+    fields = ["title", "content", "author"]
+    success_url = "/posts/"
+    template_name = "blog/post_form.html"
 
 
 class PostUpdateView(UpdateView):
     model = Post
-    template_name = "blog/post_update.html"
+    fields = ["title", "content", "author"]
+    success_url = "/posts/"
+    template_name = "blog/post_form.html"
 
 
 class PostDeleteView(DeleteView):
     model = Post
-    template_name = "blog/post_delete.html"
+    success_url = "/posts/"
+    template_name = "blog/post_confirm_delete.html"
