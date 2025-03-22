@@ -1,7 +1,6 @@
-from django.shortcuts import render
-from django.contrib.auth.views import LoginView, LogoutView
-from django.contrib.auth.forms import UserCreationForm, UserChangeForm
+from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
+from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 
 
 # Create your views here.
@@ -15,7 +14,7 @@ def register(request):
         form = UserCreationForm(request.POST)
         if form.is_valid():
             form.save()
-            reverse_lazy("login")
+            return redirect("/login/")
     context = {
         "form": form,
     }
@@ -23,8 +22,9 @@ def register(request):
 
 
 def profile(request):
-    form = UserChangeForm
+    form = UserChangeForm()
     if request.method == "POST":
+        form = UserChangeForm(request.POST)
         if form.is_valid():
             form.save()
     context = {"form": form}

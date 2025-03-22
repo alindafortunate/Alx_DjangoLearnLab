@@ -1,15 +1,9 @@
-from django.contrib.auth.models import AbstractUser
 from django.db import models
+from django.contrib.auth.models import User
+
 
 
 # Create your models here.
-class CustomUser(AbstractUser):
-    bio = models.CharField(max_length=255, null=True)
-
-
-User = CustomUser
-
-
 class Post(models.Model):
     title = models.CharField(max_length=200)
     content = models.TextField()
