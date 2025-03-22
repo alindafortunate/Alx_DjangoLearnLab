@@ -81,7 +81,7 @@ DATABASES = {
         "USER": "alindafortunate",
         "PASSWORD": "Alinda@1998",
         "HOST": "localhost",
-        "PORT": 5432,        
+        "PORT": 5432,
     }
 }
 
@@ -131,3 +131,6 @@ STATICFILES_DIRS = [
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 AUTH_USER_MODEL = "blog.CustomUser"
+
+LOGIN_REDIRECT_URL = "home"
+LOGOUT_REDIRECT_URL = "home"
