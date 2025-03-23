@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from taggit.managers import TaggableManager
 
 
 # Create your models here.
@@ -24,3 +25,8 @@ class Comment(models.Model):
 
     def __str__(self):
         return f"{self.post}"
+
+
+class Tag(models.Model):
+    name = models.ManyToManyField(Post)
+    tags = TaggableManager()
