@@ -1,7 +1,5 @@
-{% load 'css/styles.css' %}
-
 {% extends 'blog/base.html' %}
-
+{% load static %}
 
 {% block content %}
 
@@ -9,9 +7,10 @@
 <form method="post">
     {% csrf_token %}
 
-    {{form.as_p}}
+    <p>Username:{{form.username}}</p>
+    <p>Email:{{form.email}}</p>
 
-    <button type="submit">Update Profile</button>
+    <input type="submit" value="save">
 </form>
 
 
