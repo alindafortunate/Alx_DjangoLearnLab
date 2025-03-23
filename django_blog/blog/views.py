@@ -14,8 +14,8 @@ from django.views.generic import (
     DeleteView,
 )
 
-from .models import Post
-from .forms import CustomUserCreationForm
+from .models import Post, Comment
+from .forms import CustomUserCreationForm, CommentForm
 
 
 # Create your views here.
@@ -107,12 +107,20 @@ class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 
 
 class CommentCreateView(CreateView):
-    pass
+    model = Comment
+    fields = ["post", "content", "author"]
+    success_url = "/posts/"
+    template_name = "blog/comment_form.html"
 
 
 class CommentUpdateView(UpdateView):
-    pass
+    model = Comment
+    context_object_name = "comment"
+    fields = ["post", "content", "author"]
+    template_name = "blog/post_detail.html"
 
 
 class CommentDeleteView(DeleteView):
-    pass
+    model = Comment
+    success_url = "/posts/"
+    template_name = "blog/comment_confirm_delete.html"

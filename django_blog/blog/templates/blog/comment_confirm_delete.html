@@ -1,0 +1,16 @@
+{% extends 'blog/base.html' %}
+
+{% load static %}
+
+
+{% block content %}
+
+<h1>Welcome to the comment delete page</h1>
+<form method="post">
+    {% csrf_token %}
+    <p>Are you sure you want to delete {{object}} ?</p>
+
+    <input type="submit" value="delete">
+</form>
+
+{% endblock content %}

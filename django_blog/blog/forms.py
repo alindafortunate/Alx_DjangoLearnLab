@@ -31,4 +31,4 @@ class CustomUserCreationForm(UserCreationForm):
 class CommentForm(forms.ModelForm):
     class Meta:
         model = Comment
-        fields = ["post,author,content"]
+        fields = ["post", "author", "content"]
