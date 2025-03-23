@@ -104,3 +104,7 @@ class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
         return self.get_object().author == self.request.user
 
     # Though I have implemented the UserPassesTestMixin, I didn't understand it more research needed.
+
+
+class ListComment(ListView):
+    pass
