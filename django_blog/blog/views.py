@@ -106,5 +106,13 @@ class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     # Though I have implemented the UserPassesTestMixin, I didn't understand it more research needed.
 
 
-class ListComment(ListView):
+class CommentCreateView(CreateView):
+    pass
+
+
+class CommentUpdateView(UpdateView):
+    pass
+
+
+class CommentDeleteView(DeleteView):
     pass
