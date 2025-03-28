@@ -1,14 +1,9 @@
 from django.contrib.auth.models import AbstractUser
 from django.contrib.auth.models import BaseUserManager
 from django.db import models
-from django.contrib.auth import get_user_model
-
-User = get_user_model()
 
 
 # Create your models here.
-
-
 class CustomUserManager(BaseUserManager):
     def create_user(self, email, password=None):
         if not email:
@@ -30,9 +25,10 @@ class CustomUser(AbstractUser):
     username = models.CharField(unique=False, max_length=100)
     email = models.EmailField(unique=True, max_length=200)
     bio = models.TextField(max_length=255)
-    profile_picture = models.ImageField()
-    followers = models.ManyToManyField(User, symmetrical=False)
+    profile_picture = models.ImageField(upload_to="images")
+    followers = models.ManyToManyField("self", symmetrical=False)
 
     USERNAME_FIELD = "email"
+    REQUIRED_FIELDS = []
 
     objects = CustomUserManager()
