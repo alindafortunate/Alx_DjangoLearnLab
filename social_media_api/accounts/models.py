@@ -1,4 +1,5 @@
-from django.contrib.auth.models import BaseUserManager, AbstractUser
+from django.contrib.auth.models import AbstractUser
+from django.contrib.auth.models import BaseUserManager
 from django.db import models
 from django.contrib.auth import get_user_model
 
@@ -28,7 +29,7 @@ class CustomUserManager(BaseUserManager):
 class CustomUser(AbstractUser):
     username = models.CharField(unique=False, max_length=100)
     email = models.EmailField(unique=True, max_length=200)
-    bio = models.CharField(max_length=255)
+    bio = models.TextField(max_length=255)
     profile_picture = models.ImageField()
     followers = models.ManyToManyField(User, symmetrical=False)
 
