@@ -9,8 +9,8 @@ class Post(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name="posts")
     title = models.CharField(max_length=255)
     content = models.TextField()
-    created_at = models.DateField(auto_now_add=True)
-    update_at = models.DateField(auto_created=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    update_at = models.DateTimeField(auto_created=True)
 
 
 class Comment(models.Model):
@@ -20,5 +20,5 @@ class Comment(models.Model):
     author = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name="author_comments"
     )
-    created_at = models.DateField(auto_now_add=True)
-    updated_at = models.DateField(auto_created=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_created=True)
