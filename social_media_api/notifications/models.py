@@ -1,3 +1,4 @@
+from django.contrib.contenttypes.fields import GenericForeignKey
 from django.contrib.auth import get_user_model
 from django.db import models
 
@@ -11,3 +12,5 @@ class Notification(models.Model):
     )
     actor = models.ForeignKey(User, on_delete=models.CASCADE, related_name="actors")
     verb = models.CharField(max_length=255)
+    target = GenericForeignKey("target", "object_id")
+    timestamp = models.DateTimeField(auto_now_add=True)
