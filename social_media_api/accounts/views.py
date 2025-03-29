@@ -96,3 +96,4 @@ REST_FRAMEWORK = {
 class CustomUserListAPIView(generics.GenericAPIView, generics.ListAPIView):
     queryset = CustomUser.objects.all()
     serializer_class = CustomUserSerializer
+

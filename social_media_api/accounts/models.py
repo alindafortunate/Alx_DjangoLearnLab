@@ -27,7 +27,9 @@ class CustomUser(AbstractUser):
     bio = models.TextField(max_length=255)
     profile_picture = models.ImageField(upload_to="images")
     followers = models.ManyToManyField("self", symmetrical=False)
-    following = models.ManyToManyField("self", symmetrical=False)
+    following = models.ManyToManyField(
+        "self", symmetrical=False, related_name="following"
+    )
 
     USERNAME_FIELD = "email"
     REQUIRED_FIELDS = []
